@@ -5,6 +5,8 @@ import dotenv from "dotenv"
 import destinationRouter from "./routes/destination.js"
 import activityRouter from './routes/activities.js';
 import placeRouter from './routes/places.js';
+import packageRouter from './routes/packages.js';
+import recommenderRouter from './routes/personalize.js';
 import supabase from './db/index.js';
 const app = express();
 
@@ -25,6 +27,8 @@ app.get('/products', async (req, res) => {
 app.use('/api/destination', destinationRouter);
 app.use('/api/activities', activityRouter);
 app.use('/api/places', placeRouter);
+app.use('/api/packages', packageRouter);
+app.use('/api/recommend', recommenderRouter);
 
 app.get('/health', (req, res) => {
   res.send('I am alive...');
