@@ -1,8 +1,8 @@
-const supabase = require("../db/index.js")
-const {capitalize} = require("../helpers/index.js")
-const router = require("express").Router();
+const Router = require('express').Router;
+const supabase = require('../db/index.js');
+const { capitalize } = require('../helpers/index.js');
 
-
+const router = Router();
 
 router.get('/all', async (req, res) => {
 
