@@ -18,16 +18,26 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/products', async (req, res) => {
-	const { data, error } = await supabase.from('destinations').select();
+	const {data, error} = await supabase
+	.from('products')
+	.select()
+
+	if(error){
+		console.log(error)
+	}
 	res.send(data);
 });
 
-app.use('/api/destination', destinationRouter);
+app.use('/api/destinations', destinationRouter);
 app.use('/api/activities', activityRouter);
 app.use('/api/places', placeRouter);
 
 app.get('/health', (req, res) => {
   res.send('I am alive...');
+});
+
+app.get('/', (req, res) => {
+  res.send(<h1>Hallo</h1>);
 });
 
 app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}.`));

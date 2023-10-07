@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import supabase from '../db/index.js';
-import { capitalize } from '../helpers/index.js';
 
 const router = Router();
 
