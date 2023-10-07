@@ -1,6 +1,6 @@
-const Router = require('express').Router;
-const supabase = require('../db/index.js');
-const { capitalize } = require('../helpers/index.js');
+import { Router } from 'express';
+import supabase from '../db/index.js';
+import { capitalize } from '../helpers/index.js';
 
 const router = Router();
 
