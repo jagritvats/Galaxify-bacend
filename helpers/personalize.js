@@ -92,4 +92,4 @@ function recommendPlanets(answers, planets) {
 	return recommendations.slice(0, 3);
 }
 
-export default recommendPlanets;
+module.exports = recommendPlanets;

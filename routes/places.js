@@ -1,7 +1,5 @@
-import { Router } from 'express';
-import supabase from '../db/index.js';
-import { capitalize } from '../helpers/index.js';
-
+const Router = require('express').Router;
+const supabase = require('../db/index.js');
 const router = Router();
 
 router.get('/all', async (req, res) => {
@@ -17,4 +15,4 @@ router.get('/:id', async (req, res) => {
 	res.send(data);
 });
 
-export default router;
+module.exports = router;

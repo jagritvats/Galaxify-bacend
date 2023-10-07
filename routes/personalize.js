@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import recommenderService from '../service/recommender.js';
+const Router = require('express').Router;
+const recommenderService = require('../service/recommender.js');
 
 const router = Router();
 
@@ -10,4 +10,4 @@ router.post('/', async (req, res) => {
 	res.json(itinerary);
 });
 
-export default router;
+module.exports = router;

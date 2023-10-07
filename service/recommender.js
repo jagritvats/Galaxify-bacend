@@ -1,5 +1,5 @@
-import supabase from '../db/index.js';
-import personalizor from '../helpers/personalize.js';
+const supabase = require('../db/index.js');
+const personalizor = require('../helpers/personalize.js');
 
 const getDestinations = async () => {
 	const { data, error } = await supabase.from('destinations').select();
@@ -11,4 +11,4 @@ const recommenderService = async (answers) => {
 	return personalizor(answers, dests);
 };
 
-export default recommenderService;
+module.exports = recommenderService;
