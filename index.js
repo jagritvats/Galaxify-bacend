@@ -1,11 +1,13 @@
-import express from "express"
-import cors from "cors"
-import morgan from "morgan"
-import dotenv from "dotenv"
-import destinationRouter from "./routes/destination.js"
-import activityRouter from './routes/activities.js';
-import placeRouter from './routes/places.js';
-import supabase from './db/index.js';
+
+const express = require("express");
+const dotenv = require("dotenv")
+const cors = require("cors")
+const morgan = require("morgan")
+const destinationRouter = require("./routes/destination")
+const activityRouter = require("./routes/activities")
+const placeRouter = require("./routes/places")
+const supabase = require("./db/index")
+
 const app = express();
 
 const PORT = 8080;
@@ -37,7 +39,7 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send("<h1>Hello</h1>");
+  res.send("<h1>Hello World</h1>");
 });
 
 app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}.`));

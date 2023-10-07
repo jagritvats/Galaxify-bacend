@@ -1,8 +1,7 @@
-import {Router} from 'express'
-import supabase from '../db/index.js'
-import { capitalize } from '../helpers/index.js';
+const supabase = require("../db/index.js")
+const {capitalize} = require("../helpers/index.js")
+const router = require("express").Router();
 
-const router = Router();
 
 router.get('/all', async (req, res) => {
 
@@ -22,4 +21,4 @@ router.get('/:name', async (req, res) => {
 })
 
 
-export default router;
+module.exports = router

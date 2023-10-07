@@ -1,7 +1,5 @@
-import { Router } from 'express';
-import supabase from '../db/index.js';
-
-const router = Router();
+const supabase = require("../db/index.js")
+const router = require("express").Router();
 
 router.get('/all', async (req, res) => {
 	const { data, error } = await supabase.from('places').select();
@@ -16,4 +14,4 @@ router.get('/:id', async (req, res) => {
 	res.send(data);
 });
 
-export default router;
+module.exports = router
