@@ -37,7 +37,7 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send(<h1>Hallo</h1>);
+  res.send("<h1>Hello</h1>");
 });
 
 app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}.`));
