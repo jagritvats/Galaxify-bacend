@@ -36,7 +36,7 @@ const planetComparator = (p1, p2) => {
 	return p1Score < p2Score;
 };
 
-const recommendPlanets = (answers, planets) => {
+function recommendPlanets(answers, planets) {
 	let recommendations = planets;
 
 	// Filter based on age
@@ -90,62 +90,6 @@ const recommendPlanets = (answers, planets) => {
 	// }
 
 	return recommendations.slice(0, 3);
-};
-
-const recommendPlaces = (answers, places) => {
-	let recommendations = places;
-
-	// Filter based on age
-	if (answers.age === '51 and above') {
-		console.log('Age 51 and above');
-		recommendations = recommendations.filter(
-			(place) =>
-				place.effort !== 'high' && !place.tags.includes('adverse')
-		);
-		console.log(recommendations);
-	}
-
-	places.map((place) => (place.difficultyScore = difficultyScore(place)));
-	recommendations.sort((p1, p2) => p1.difficultyScore - p2.difficultyScore);
-
-	if (
-		(answers.age === '18-30' &&
-			(answers.activityLevel === 'Very active' ||
-				(answers.activityLevel === 'Moderately active' &&
-					answers.extremeConditions === 'Bring it on!'))) ||
-		(answers !== '51 and above' &&
-			answers.activityLevel === 'Very active' &&
-			answers.extremeConditions === 'Bring it on!')
-	) {
-		recommendations = recommendations.reverse();
-	}
-
-	if (
-		answers.extremeConditions === 'I prefer mild conditions' ||
-		answers.extremeConditions === 'I prefer comfort'
-	) {
-		recommendations = recommendations.filter(
-			(place) => !place.tags.includes('adverse')
-		);
-	}
-
-	// Filter based on interests
-	// if (answers.interest === 'Natural Beauty') {
-	// 	recommendations = recommendations.sort(
-	// 		(p1, p2) =>
-	// 			p2.tags.includes('beautiful') - p1.tags.includes('beautiful')
-	// 	);
-	// 	// recommendations = recommendations.filter(
-	// 	// 	(planet) =>
-	// 	// 		!planet.tags.includes('ugly') && !planet.tags.includes('barren')
-	// 	// );
-	// } else if (answers.interest === 'Alien Landscapes') {
-	// 	recommendations = recommendations.filter(
-	// 		(planet) => !planet.tags.includes('normal')
-	// 	);
-	// }
-
-	return recommendations.slice(0, 3);
-};
+}
 
 module.exports = recommendPlanets;
