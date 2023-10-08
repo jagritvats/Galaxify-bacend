@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 			userPrefs
 		)} has itinerary list: ${JSON.stringify(
 			itinerary
-		)}, select and return in only the index of the best one like so : "x", without any text`
+		)}, select and return in only the (0-indexing) index of the best one like so : "x", without any text`
 	);
 	console.log(resp);
 	try {
