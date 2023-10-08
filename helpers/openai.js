@@ -1,4 +1,4 @@
-const openai = require('openai');
+
 const generatePrompt = require('../service/openai');
 
 // const createPersonalizedSummaryForUserMultiplePlanets = (
