@@ -1,5 +1,6 @@
-const supabase = require("../db/index.js")
-const router = require("express").Router();
+const Router = require('express').Router;
+const supabase = require('../db/index.js');
+const router = Router();
 
 router.get('/all', async (req, res) => {
 	const { data, error } = await supabase.from('places').select();
@@ -14,4 +15,4 @@ router.get('/:id', async (req, res) => {
 	res.send(data);
 });
 
-module.exports = router
+module.exports = router;

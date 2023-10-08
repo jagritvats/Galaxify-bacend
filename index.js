@@ -1,12 +1,13 @@
-
-const express = require("express");
-const dotenv = require("dotenv")
-const cors = require("cors")
-const morgan = require("morgan")
-const destinationRouter = require("./routes/destination")
-const activityRouter = require("./routes/activities")
-const placeRouter = require("./routes/places")
-const supabase = require("./db/index")
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const morgan = require('morgan');
+const destinationRouter = require('./routes/destination');
+const activityRouter = require('./routes/activities');
+const placeRouter = require('./routes/places');
+const packageRouter = require('./routes/packages');
+const recommenderRouter = require('./routes/personalize');
+const supabase = require('./db/index');
 
 const app = express();
 
@@ -20,12 +21,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/products', async (req, res) => {
-	const {data, error} = await supabase
-	.from('products')
-	.select()
+	const { data, error } = await supabase.from('products').select();
 
-	if(error){
-		console.log(error)
+	if (error) {
+		console.log(error);
 	}
 	res.send(data);
 });
@@ -33,13 +32,17 @@ app.get('/products', async (req, res) => {
 app.use('/api/destinations', destinationRouter);
 app.use('/api/activities', activityRouter);
 app.use('/api/places', placeRouter);
+app.use('/api/packages', packageRouter);
+app.use('/api/recommend', recommenderRouter);
 
 app.get('/health', (req, res) => {
-  res.send('I am alive...');
+	res.send('I am alive...');
 });
 
 app.get('/', (req, res) => {
-  res.send("<h1>Hello World</h1>");
+	res.send('<h1>Hello World</h1>');
 });
 
-app.listen(PORT, () => console.log(`Example app is listening on port ${PORT}.`));
+app.listen(PORT, () =>
+	console.log(`Example app is listening on port ${PORT}.`)
+);

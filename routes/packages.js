@@ -1,19 +1,18 @@
 const Router = require('express').Router;
 const supabase = require('../db/index.js');
-const { capitalize } = require('../helpers/index.js');
 
 const router = Router();
 
 router.get('/all', async (req, res) => {
-	const { data, error } = await supabase.from('activities').select();
+	const { data, error } = await supabase.from('pkgs').select();
 	res.send(data);
 });
 
-router.get('/:name', async (req, res) => {
+router.get('/:id', async (req, res) => {
 	const { data, error } = await supabase
-		.from('activities')
+		.from('pkgs')
 		.select()
-		.eq('activityName', capitalize(req.params.name));
+		.eq('id', parseInt(req.params.id));
 	res.send(data);
 });
 
