@@ -41,7 +41,7 @@ router.get("/:name", async (req, res) => {
     destination[0].places = [];
   }
 
-  if (!!destination[0].length) {
+  if (!!destination[0].packages.length ) {
     const { data: packages } = await supabase
       .from("packages")
       .select()
