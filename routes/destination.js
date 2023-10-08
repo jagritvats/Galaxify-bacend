@@ -29,13 +29,16 @@ router.get('/:name', async (req, res) => {
         .select()
         .in('id', destination[0].activities)
 
-    const {data: places} = await supabase
-        .from('places')
-        .select()
-        .in('id', destination[0].places)
+    if(!!destination[0].places){
+        const {data: places} = await supabase
+            .from('places')
+            .select()
+            .in('id', destination[0].places)
+        
+        destination[0].places = places
+    }
 
     destination[0].activities = activities
-    destination[0].places = places
 
     res.send(destination[0]);
 })
